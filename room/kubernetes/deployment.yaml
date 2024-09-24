@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: room
-          image: "user07.azurecr.io/room:v2"
+          image: "user07.azurecr.io/room:latest"
           ports:
             - containerPort: 8080
           resources:
