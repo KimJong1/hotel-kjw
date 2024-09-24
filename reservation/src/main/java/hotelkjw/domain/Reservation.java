@@ -50,6 +50,8 @@ public class Reservation {
 
     //<<< Clean Arch / Port Method
     public static void notifyToUser(Outofstock outofstock) {
+        System.out.println("out of stock noti");
+        
         //implement business logic here:
 
         /** Example 1:  new item 

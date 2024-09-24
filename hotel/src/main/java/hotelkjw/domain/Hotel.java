@@ -45,6 +45,13 @@ public class Hotel {
 
     //<<< Clean Arch / Port Method
     public static void startReservation(RoomReserved roomReserved) {
+        Hotel hotel = new Hotel();
+        hotel.setId(roomReserved.getId());
+        hotel.setRoomId(roomReserved.getRoomId());
+        hotel.setQty(roomReserved.getQty());
+        Reservationcompleted reservationcompleted = new Reservationcompleted(hotel);
+        reservationcompleted.publishAfterCommit();
+        
         //implement business logic here:
 
         /** Example 1:  new item 

@@ -45,6 +45,20 @@ public class Room {
 
     //<<< Clean Arch / Port Method
     public static void decreseRoom(Reservationcompleted reservationcompleted) {
+
+        repository().findById(Long.valueOf(reservationcompleted.getId())).ifPresent(room->{
+
+            if(room.getStock() - reservationcompleted.getQty() >= 0){
+                room.setStock(room.getStock() - reservationcompleted.getQty());
+                repository().save(room);
+            }
+            else{
+                Outofstock outofstock = new Outofstock(room);
+                outofstock.publishAfterCommit();
+            }
+            
+        });
+        
         //implement business logic here:
 
         /** Example 1:  new item 
