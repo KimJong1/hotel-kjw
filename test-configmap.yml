@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-dev
+  namespace: tutorial
+data:
+  ORDER_DB_URL: jdbc:mysql://mysql:3306/connectdb1?serverTimezone=Asia/Seoul&useSSL=false
+  ORDER_DB_USER: myuser
+  ORDER_DB_PASS: mypass
+  ORDER_LOG_LEVEL: INFO

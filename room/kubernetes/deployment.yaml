@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
         - name: room
-          image: "user07.azurecr.io/room:v1"
+          image: "user07.azurecr.io/room:v2"
           ports:
             - containerPort: 8080
           resources:
             requests:
-              cpu: "200m"
+              cpu: "210m"
           readinessProbe:
             httpGet:
               path: '/actuator/health'
               port: 8080
-            initialDelaySeconds: 10
+            initialDelaySeconds: 15
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 10
@@ -39,8 +39,15 @@ spec:
             periodSeconds: 5
             failureThreshold: 5
           env:
-            - name: ORDER_LOG_LEVEL
-              valueFrom:
-                configMapKeyRef:
-                  name: config-dev
-                  key: ORDER_LOG_LEVEL
+          - name: ORDER_LOG_LEVEL
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: ORDER_LOG_LEVEL
+          # volumeMounts:
+          #   - mountPath: "/mnt/data"
+          #     name: volume
+      # volumes:
+      #   - name: volume
+      #     persistentVolumeClaim:
+      #       claimName: azurefile 
